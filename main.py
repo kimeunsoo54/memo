@@ -103,7 +103,6 @@ else:
                           key=f"edit_fav_{i}")
             st.write("---")
 
-st.divider()
 
 # 2) 기존 메모 목록 표시
 st.subheader("메모 목록")
