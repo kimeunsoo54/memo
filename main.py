@@ -60,7 +60,7 @@ def cancel_edit():
 # --- 메인 화면 구성 ---
 st.title("간단 메모")
 
-@st.cache_resource
+@st.cache_data
 
 # 1) 메모 추가 섹션
 st.subheader("새 메모 작성")
