@@ -18,6 +18,10 @@ if "edit_text" not in st.session_state:
     # 수정 시 임시로 메모 내용을 담아두는 상태
     st.session_state.edit_text = ""
 
+if "edit_text1" not in st.session_state:
+    # 수정 시 임시로 메모 내용을 담아두는 상태
+    st.session_state.edit_text = ""
+
 # --- 기능 함수들 ---
 def add_note():
     """새로운 메모 추가"""
@@ -82,7 +86,7 @@ else:
 
         # 수정 모드인 경우
         if st.session_state.edit_index == i:
-            st.text_input("메모 수정", key="edit_text")
+            st.text_input("메모 수정", key="edit_text1")
             col_save, col_cancel = st.columns([1, 1])
             with col_save:
                 st.button("저장", on_click=save_edit, args=(i,))
