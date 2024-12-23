@@ -132,8 +132,14 @@ else:
                 st.button("수정", on_click=start_edit, args=(i,),
                           key=f"edit_{i}")
 
+st.divider()
+
 
 # 4) 파일 업로드 및 목록 표시
 st.subheader("업로드 파일 목록")
-uploaded_file = st.file_uploader("파일을 업로드하세요", accept_multiple_files=True)
+uploaded_file = st.file_uploader("파일을 업로드하세요", accept_multiple_files=True, visibility=False)
 
+if uploaded_file is not None:
+    for i in range(len(UploadedFile)):
+        st.download_button(label="파일 다운로드", file_name=UploadedFile[i-1])
+        
