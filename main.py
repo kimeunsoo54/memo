@@ -51,17 +51,17 @@ def cancel_edit():
     st.session_state.edit_text = ""
 
 # --- 메인 화면 구성 ---
-st.title("간단 메모장")
+st.title("📝 간단 메모장")
 
 # 1) 메모 추가 섹션
-st.subheader("새 메모 작성")
+st.subheader("📑 새 메모 작성")
 st.text_input("메모 내용", key="new_note")
 st.button("추가", on_click=add_note)
 
 st.divider()  # 구분선
 
 # 2) 즐겨찾기 메모 목록 섹션 (새로 추가된 부분)
-st.subheader("즐겨찾기 메모 목록")
+st.subheader("⭐️ 즐겨찾기 메모 목록")
 
 # 즐겨찾기된 메모의 인덱스만 추출
 favorite_indices = [i for i, note in enumerate(st.session_state.notes) if note["favorite"]]
@@ -72,15 +72,16 @@ else:
     for i in favorite_indices:
         note = st.session_state.notes[i]
         
-        st.markdown(f"**⭐ {i+1}. {note['text']}**")
+        st.markdown(f"**⭐ {note['text']}**")
 
         col_del, col_fav= st.columns([1, 1])
-        with col_del:
-            st.button("삭제", on_click=delete_note, args=(i,),
-                key=f"delete_fav_{i}")
         with col_fav:
-            st.button("즐겨찾기 해제", on_click=toggle_favorite, args=(i,),
+            st.button("❎ 즐겨찾기 해제", on_click=toggle_favorite, args=(i,),
                 key=f"favorite_fav_{i}")
+        with col_del:
+            st.button("🗑️ 삭제", on_click=delete_note, args=(i,),
+                key=f"delete_fav_{i}")
+        
         
 
 
@@ -88,7 +89,7 @@ else:
 st.divider()
 
 # 3) 기존 메모(전체) 목록 표시
-st.subheader("전체 메모 목록")
+st.subheader("✅ 전체 메모 목록")
 if not st.session_state.notes:
     st.info("아직 메모가 없습니다. 메모를 추가해보세요!")
 else:
@@ -98,37 +99,37 @@ else:
         # 필요에 따라 이중 표시를 없애고, '즐겨찾기가 아닌 메모'만 보이게 수정해도 좋습니다.
 
         if st.session_state.edit_index == i:
-            st.text_input("메모 수정", key="edit_text")
+            st.text_input("✏️ 메모 수정", key="edit_text")
             col_save, col_cancel = st.columns([1, 1])
             with col_save:
-                st.button("저장", on_click=save_edit, args=(i,))
+                st.button("📩 저장", on_click=save_edit, args=(i,))
             with col_cancel:
-                st.button("취소", on_click=cancel_edit)
+                st.button("⛔️ 취소", on_click=cancel_edit)
 
         else:
             # 즐겨찾기 여부에 따라 별(⭐) 표시
             favorite_star = "⭐ " if note['favorite'] else ""
-            st.markdown(f"**{favorite_star}{i+1}. {note['text']}**")
+            st.markdown(f"**{favorite_star} {note['text']}**")
 
             col_del, col_fav, col_edit = st.columns([1, 1, 1])
-            with col_del:
-                st.button("삭제", on_click=delete_note, args=(i,),
-                          key=f"delete_{i}")
             with col_fav:
-                st.button("즐겨찾기", on_click=toggle_favorite, args=(i,),
+                st.button("⭐️ 즐겨찾기", on_click=toggle_favorite, args=(i,),
                           key=f"favorite_{i}")
             with col_edit:
-                st.button("수정", on_click=start_edit, args=(i,),
+                st.button("⚒️ 수정", on_click=start_edit, args=(i,),
                           key=f"edit_{i}")
+            with col_del:
+                st.button("❌ 삭제", on_click=delete_note, args=(i,),
+                          key=f"delete_{i}")
 
 st.divider()
 
 
 # 4) 파일 업로드 및 목록 표시
-st.subheader("업로드 파일 목록")
-uploaded_file = st.file_uploader("파일을 업로드하세요", accept_multiple_files=True, label_visibility="collapsed")
+st.subheader("📒 업로드 파일 목록")
+uploaded_file = st.file_uploader("원하는 파일을 업로드하세요", accept_multiple_files=True, label_visibility="collapsed")
 
 if uploaded_file is not None:
     for file in uploaded_file:
-        st.download_button(label=str(file.name) + " 파일 다운로드", data = "file", file_name=file.name)
+        st.download_button(label="📥 " + str(file.name) + " 파일 다운로드", data = "file", file_name=file.name)
         
