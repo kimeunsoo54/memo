@@ -82,25 +82,7 @@ else:
             st.button("즐겨찾기 해제", on_click=toggle_favorite, args=(i,),
                 key=f"favorite_fav_{i}")
         
-"""
-        # 수정 모드인 경우
-        if st.session_state.edit_index == i:
-            st.text_input("메모 수정", key="edit_text")
-            col_save, col_cancel = st.columns([1, 1])
-            with col_save:
-                st.button("저장", on_click=save_edit, args=(i,))
-            with col_cancel:
-                st.button("취소", on_click=cancel_edit)
 
-        else:
-
-"""
-
-"""
-            with col_edit:
-                st.button("수정", on_click=start_edit, args=(i,),
-                          key=f"edit_fav_{i}")
-"""
 
 
 st.divider()
