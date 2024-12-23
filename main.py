@@ -110,7 +110,7 @@ else:
 
         else:
             # 즐겨찾기 여부에 따라 별(⭐) 표시
-            favorite_star = "⭐ " if note['favorite'] else ""
+            favorite_star = "📌 " if note['favorite'] else ""
             st.markdown(f"{favorite_star} {note['text']}")
 
             col_del, col_fav, col_edit = st.columns([1, 1, 1])
