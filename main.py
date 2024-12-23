@@ -141,5 +141,5 @@ uploaded_file = st.file_uploader("파일을 업로드하세요", accept_multiple
 
 if uploaded_file is not None:
     for file in uploaded_file:
-        st.download_button(label="파일 다운로드", data = "file", file_name=file.name)
+        st.download_button(label=str(file.name) + " 파일 다운로드", data = "file", file_name=file.name)
         
