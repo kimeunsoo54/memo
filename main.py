@@ -74,7 +74,7 @@ else:
     for i in favorite_indices:
         note = st.session_state.notes[i]
         
-        st.markdown(f"⭐ {note['text']}")
+        st.markdown(f"📌 {note['text']}")
 
         col_del, col_fav= st.columns([1, 1])
         with col_fav:
