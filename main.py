@@ -80,7 +80,6 @@ else:
                 st.button("저장", on_click=save_edit, args=(i,))
             with col_cancel:
                 st.button("취소", on_click=cancel_edit)
-            st.write("---")
 
         else:
             # 즐겨찾기 표시(⭐)는 이미 favorite_notes 섹션이므로 자동으로 즐겨찾기된 것임
@@ -96,7 +95,6 @@ else:
             with col_edit:
                 st.button("수정", on_click=start_edit, args=(i,),
                           key=f"edit_fav_{i}")
-            st.write("---")
 
 st.divider()
 
@@ -117,7 +115,6 @@ else:
                 st.button("저장", on_click=save_edit, args=(i,))
             with col_cancel:
                 st.button("취소", on_click=cancel_edit)
-            st.write("---")
 
         else:
             # 즐겨찾기 여부에 따라 별(⭐) 표시
@@ -134,4 +131,3 @@ else:
             with col_edit:
                 st.button("수정", on_click=start_edit, args=(i,),
                           key=f"edit_{i}")
-            st.write("---")
