@@ -131,3 +131,9 @@ else:
             with col_edit:
                 st.button("수정", on_click=start_edit, args=(i,),
                           key=f"edit_{i}")
+
+
+# 4) 파일 업로드 및 목록 표시
+st.subheader("업로드 파일 목록")
+uploaded_file = st.file_uploader("파일을 업로드하세요")
+
