@@ -71,7 +71,7 @@ if not favorite_indices:
 else:
     for i in favorite_indices:
         note = st.session_state.notes[i]
-
+"""
         # 수정 모드인 경우
         if st.session_state.edit_index == i:
             st.text_input("메모 수정", key="edit_text")
@@ -95,6 +95,8 @@ else:
             with col_edit:
                 st.button("수정", on_click=start_edit, args=(i,),
                           key=f"edit_fav_{i}")
+"""
+
 
 st.divider()
 
