@@ -100,7 +100,6 @@ else:
     with col_edit:
          st.button("수정", on_click=start_edit, args=(i,),
                    key=f"edit_fav_{i}")
-    st.write("---")
 
 st.write("---")
 
