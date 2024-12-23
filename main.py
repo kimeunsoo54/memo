@@ -135,5 +135,5 @@ else:
 
 # 4) 파일 업로드 및 목록 표시
 st.subheader("업로드 파일 목록")
-uploaded_file = st.file_uploader("파일을 업로드하세요")
+uploaded_file = st.file_uploader("파일을 업로드하세요", accept_multiple_files=True)
 
