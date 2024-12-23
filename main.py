@@ -72,6 +72,16 @@ else:
     for i in favorite_indices:
         note = st.session_state.notes[i]
         
+        st.markdown(f"**⭐ {i+1}. {note['text']}**")
+
+        col_del, col_fav= st.columns([1, 1])
+        with col_del:
+            st.button("삭제", on_click=delete_note, args=(i,),
+                key=f"delete_fav_{i}")
+        with col_fav:
+            st.button("즐겨찾기 해제", on_click=toggle_favorite, args=(i,),
+                key=f"favorite_fav_{i}")
+        
 """
         # 수정 모드인 경우
         if st.session_state.edit_index == i:
@@ -85,16 +95,6 @@ else:
         else:
 
 """
-# 즐겨찾기 표시(⭐)는 이미 favorite_notes 섹션이므로 자동으로 즐겨찾기된 것임
-        st.markdown(f"**⭐ {i+1}. {note['text']}**")
-
-        col_del, col_fav, col_edit = st.columns([1, 1, 1])
-        with col_del:
-            st.button("삭제", on_click=delete_note, args=(i,),
-                key=f"delete_fav_{i}")
-        with col_fav:
-            st.button("즐겨찾기 해제", on_click=toggle_favorite, args=(i,),
-                key=f"favorite_fav_{i}")
 
 """
             with col_edit:
