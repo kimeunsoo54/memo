@@ -65,6 +65,46 @@ st.button("추가", on_click=add_note)
 
 st.divider()  # 구분선
 
+# 2) 즐겨찾기 메모 목록 섹션 (새로 추가된 부분)
+st.subheader("즐겨찾기 메모 목록")
+
+# 즐겨찾기된 메모의 인덱스만 추출
+favorite_indices = [i for i, note in enumerate(st.session_state.notes) if note["favorite"]]
+
+if not favorite_indices:
+    st.info("즐겨찾기로 등록된 메모가 없습니다.")
+else:
+    for i in favorite_indices:
+        note = st.session_state.notes[i]
+
+        # 수정 모드인 경우
+        if st.session_state.edit_index == i:
+            st.text_input("메모 수정", key="edit_text")
+            col_save, col_cancel = st.columns([1, 1])
+            with col_save:
+                st.button("저장", on_click=save_edit, args=(i,))
+            with col_cancel:
+                st.button("취소", on_click=cancel_edit)
+            st.write("---")
+
+        else:
+            # 즐겨찾기 표시(⭐)는 이미 favorite_notes 섹션이므로 자동으로 즐겨찾기된 것임
+            st.markdown(f"**⭐ {i+1}. {note['text']}**")
+
+            col_del, col_fav, col_edit = st.columns([1, 1, 1])
+            with col_del:
+                st.button("삭제", on_click=delete_note, args=(i,),
+                          key=f"delete_fav_{i}")
+            with col_fav:
+                st.button("즐겨찾기 해제", on_click=toggle_favorite, args=(i,),
+                          key=f"favorite_fav_{i}")
+            with col_edit:
+                st.button("수정", on_click=start_edit, args=(i,),
+                          key=f"edit_fav_{i}")
+            st.write("---")
+
+st.divider()
+
 # 2) 기존 메모 목록 표시
 st.subheader("메모 목록")
 if not st.session_state.notes:
