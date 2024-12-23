@@ -51,12 +51,14 @@ def cancel_edit():
     st.session_state.edit_text = ""
 
 # --- 메인 화면 구성 ---
-st.title("📝 간단 메모장")
+st.title("간단 메모장")
+
+st.divider()
 
 # 1) 메모 추가 섹션
 st.subheader("📑 새 메모 작성")
-st.text_input("메모 내용", key="new_note")
-st.button("추가", on_click=add_note)
+st.text_input("메모 내용을 입력하세요", key="new_note")
+st.button("➕ 추가", on_click=add_note)
 
 st.divider()  # 구분선
 
@@ -72,7 +74,7 @@ else:
     for i in favorite_indices:
         note = st.session_state.notes[i]
         
-        st.markdown(f"**⭐ {note['text']}**")
+        st.markdown(f"⭐ {note['text']}")
 
         col_del, col_fav= st.columns([1, 1])
         with col_fav:
@@ -109,7 +111,7 @@ else:
         else:
             # 즐겨찾기 여부에 따라 별(⭐) 표시
             favorite_star = "⭐ " if note['favorite'] else ""
-            st.markdown(f"**{favorite_star} {note['text']}**")
+            st.markdown(f"{favorite_star} {note['text']}")
 
             col_del, col_fav, col_edit = st.columns([1, 1, 1])
             with col_fav:
