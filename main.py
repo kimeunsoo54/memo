@@ -71,6 +71,7 @@ st.text_input("아래 상자에 메모 내용을 작성하세요", key="new_note
 st.button("추가", on_click=add_note)
 
 st.divider()  # 구분선
+st.divider()
 
 # 2) 즐겨찾기 메모 목록 섹션 (새로 추가된 부분)
 st.subheader("즐겨찾기 메모 목록")
@@ -86,7 +87,7 @@ else:
 
         # 수정 모드인 경우
         if st.session_state.edit_index == i:
-            st.text_input("메모 수정", key="edit_text1")
+            st.text_input("메모 수정")
             col_save, col_cancel = st.columns([1, 1])
             with col_save:
                 st.button("저장", on_click=save_edit, args=(i,))
@@ -110,6 +111,7 @@ else:
                           key=f"edit_fav_{i}")
             st.write("---")
 
+st.write("---")
 
 # 2) 기존 메모 목록 표시
 st.subheader("전체 메모 목록")
@@ -119,7 +121,7 @@ else:
     for i, note in enumerate(st.session_state.notes):
         # (A) 수정 모드인 경우
         if st.session_state.edit_index == i:
-            st.text_input("메모 수정", key="edit_text")
+            st.text_input("메모 수정")
             col_save, col_cancel = st.columns([1, 1])
             with col_save:
                 st.button("저장", on_click=save_edit, args=(i,))
