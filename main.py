@@ -1,6 +1,6 @@
 import streamlit as st
 
-@st.cache_resource
+
 
 # --- 초기 설정(세션 상태) ---
 if "notes" not in st.session_state:
@@ -59,6 +59,8 @@ def cancel_edit():
 
 # --- 메인 화면 구성 ---
 st.title("간단 메모")
+
+@st.cache_resource
 
 # 1) 메모 추가 섹션
 st.subheader("새 메모 작성")
