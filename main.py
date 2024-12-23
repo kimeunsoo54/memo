@@ -85,7 +85,7 @@ else:
         else:
 
 """
-            # 즐겨찾기 표시(⭐)는 이미 favorite_notes 섹션이므로 자동으로 즐겨찾기된 것임
+# 즐겨찾기 표시(⭐)는 이미 favorite_notes 섹션이므로 자동으로 즐겨찾기된 것임
         st.markdown(f"**⭐ {i+1}. {note['text']}**")
 
         col_del, col_fav, col_edit = st.columns([1, 1, 1])
