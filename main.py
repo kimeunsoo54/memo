@@ -1,5 +1,7 @@
 import streamlit as st
 
+@st.cache_resource
+
 # --- 초기 설정(세션 상태) ---
 if "notes" not in st.session_state:
     # notes 리스트에, 각각 { 'text': "메모내용", 'favorite': bool } 구조로 저장
@@ -56,11 +58,11 @@ def cancel_edit():
     st.session_state.edit_text = ""
 
 # --- 메인 화면 구성 ---
-st.title("간단 메모장")
+st.title("간단 메모")
 
 # 1) 메모 추가 섹션
 st.subheader("새 메모 작성")
-st.text_input("메모 내용", key="new_note", on_change=None)
+st.text_input("아래 상자에 메모 내용을 작성하세요", key="new_note", on_change=None)
 st.button("추가", on_click=add_note)
 
 st.divider()  # 구분선
@@ -105,7 +107,7 @@ else:
 
 
 # 2) 기존 메모 목록 표시
-st.subheader("메모 목록")
+st.subheader("전체 메모 목록")
 if not st.session_state.notes:
     st.info("아직 메모가 없습니다. 메모를 추가해보세요!")
 else:
