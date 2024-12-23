@@ -140,6 +140,6 @@ st.subheader("업로드 파일 목록")
 uploaded_file = st.file_uploader("파일을 업로드하세요", accept_multiple_files=True, label_visibility="collapsed")
 
 if uploaded_file is not None:
-    for i in range(len(UploadedFile)):
-        st.download_button(label="파일 다운로드", file_name=UploadedFile[i-1])
+    for i in range(len(uploaded_file)):
+        st.download_button(label="파일 다운로드", file_name=uploaded_file[i-1])
         
